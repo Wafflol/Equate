@@ -13,8 +13,10 @@ Equate takes in a function and its variables, and then, using the general uncert
 
 ### Installation
 Windows(sorry apple users):
+
 install python: go to https://www.python.org/downloads/ and download python version 3.12.1
-**make sure to install pip during installation
+
+**make sure to install pip during installation**
 
 once python is installed, open command prompt and enter:
 ```bash
