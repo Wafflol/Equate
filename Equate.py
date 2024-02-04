@@ -37,7 +37,7 @@ eq = input("Enter full equation: ")
 #***** something not working here?????
 #replace all ^ with **
 eq = eq.replace("^", "**")
-
+eq = eq.replace(" ", "")
 
 #print("Your equivalent equation is:")
 #print(parse_expr(eq, transformations=transformations))
