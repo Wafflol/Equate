@@ -10,6 +10,10 @@ Equate takes in a function and its variables, and then, using the general uncert
 - Calculates uncertainties and values of the given equation
 
 ## Usage
+- cd to file directory
+- run ```python Equate.py```
+- follow instructions (use ** instead of ^ for power for now)
+
 
 ### Installation
 Windows(sorry apple users):
