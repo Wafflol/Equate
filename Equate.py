@@ -14,7 +14,7 @@ symList = {}
 partialsList = []
 isDebug = False
 
-if !isTesting:
+if not isTesting:
     numVar = int(input("Enter number of variables: "))
 
     for i in range(numVar):
