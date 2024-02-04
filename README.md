@@ -29,11 +29,8 @@ pip install sympy
 #follow pip instructions if any
 ```
 
-clone the repo and go to ./Equate/dist
-run Equate.exe and follow the instructions
 
-
-linux: 
+linux: (not updated dont follow this)
 ```bash
 # Clone the repository
 git clone https://github.com/Wafflol/Equate.git
