@@ -5,7 +5,7 @@
 Equate takes in a function and its variables, and then, using the general uncertainty equation, it returns the uncertainty formula for the function
 
 ## Demo
-![Demo](path/to/demo_optimized.gif)
+![Demo](demo_optimized.gif)
 
 ## Features
 
