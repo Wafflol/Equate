@@ -12,8 +12,11 @@ Equate takes in a function and its variables, and then, using the general uncert
 ## Usage
 - cd to file directory
 - run ```python Equate.py```
-- follow instructions (use ** instead of ^ for power for now)
+- follow instructions
+- **does not have support for implied multiplication (ex. 5x has to be written as 5*x)**
 
+### Features
+- works with common symbols (pi, rho, alphla, etc.)
 
 ### Installation
 Windows(sorry apple users):
