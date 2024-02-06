@@ -1,6 +1,8 @@
 #allows cursor movement in input
 import readline
 
+from math import sqrt
+
 #sympy
 from sympy import Symbol, diff, sympify
 from sympy.core.mul import Mul
@@ -15,6 +17,8 @@ partialsList = []
 isDebug = False
 uncertaintyList = {}
 varValues = []
+varMatch = []
+uncertaintyMatch = []
 
 if not isTesting:
     numVar = int(input("Enter number of variables: "))
@@ -64,16 +68,29 @@ for i in range(numVar):
         print(diff(symEq, symList[varList[i]]), "\n")
     partialsList.append(diff(symEq, symList[varList[i]]))
 
-finalEq = 0
+uncertainEq = 0
+uncertainEqVal = 0
 for i, x in enumerate(partialsList):
     tmp = (Mul(x, Symbol("\\delta " + varList[i])))**2
-    finalEq = Add(finalEq, tmp)
+    uncertainEq = Add(uncertainEq, tmp)
+    uncertainEqVal = Add(uncertainEqVal, (Mul(x, Symbol("u" + varList[i])))**2)
 
-finalEq = simplify(finalEq)
-print("final uncertainty equation: \\sqrt{", latex(finalEq), "}")
+
+uncertainEq = simplify(uncertainEq)
+print("final uncertainty equation: \\sqrt{", latex(uncertainEq), "}")
+print(uncertainEqVal)
 
 for i, x in enumerate(varList):
-    varValues.append(input("Enter the value for " + x + ": "))
+    y = (input("Enter the value for " + x + ": "))
+    varValues.append(y)     
+    varMatch.append((x, y)) 
+
+print("Your function evaluates to: ", symEq.subs(varMatch))
 
 for x in varList:
     uncertaintyList.update({"u" + x: input("Enter the value for " + "u" + x + ": ")})
+
+uncertainEqVal = uncertainEqVal.subs(uncertaintyList)
+print(uncertainEqVal)
+uncertainEqVal = uncertainEqVal.subs(varMatch)
+print("Your uncertainty is ", sqrt(uncertainEqVal)) 
