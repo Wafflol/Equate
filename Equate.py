@@ -13,6 +13,8 @@ isTesting = False
 symList = {}
 partialsList = []
 isDebug = False
+uncertaintyList = {}
+varValues = []
 
 if not isTesting:
     numVar = int(input("Enter number of variables: "))
@@ -30,6 +32,8 @@ if not isTesting:
     #creates symbols for each var and stores them to symList
     for i in range(numVar):
         symList.update({varList[i]: Symbol(varList[i], real=True)}) 
+    for x in varList:
+        uncertaintyList.update({"u" + x: "temp"})
 #x, y, z = symbols('x y z', real=True)
 eq = input("Enter full equation: ")
 
@@ -68,4 +72,8 @@ for i, x in enumerate(partialsList):
 finalEq = simplify(finalEq)
 print("final uncertainty equation: \\sqrt{", latex(finalEq), "}")
 
+for i, x in enumerate(varList):
+    varValues.append(input("Enter the value for " + x + ": "))
 
+for x in varList:
+    uncertaintyList.update({"u" + x: input("Enter the value for " + "u" + x + ": ")})
