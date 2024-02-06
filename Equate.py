@@ -19,6 +19,8 @@ uncertaintyList = {}
 varValues = []
 varMatch = []
 uncertaintyMatch = []
+constVals = []
+constList = []
 
 if not isTesting:
     numVar = int(input("Enter number of variables: "))
@@ -28,10 +30,10 @@ if not isTesting:
     if isDebug:
         print(varList)
 
-    #numConst = int(input("Enter number of constants: "))
+    numConst = int(input("Enter number of constants: "))
 
-    #for i in range(numConst):
-    #    constList.append(input("Enter next constant: "))
+    for i in range(numConst):
+        constList.append(input("Enter next constant: "))
     
     #creates symbols for each var and stores them to symList
     for i in range(numVar):
@@ -61,7 +63,7 @@ varSet = symEq.free_symbols
 for var in varSet:
     if symList.get(str(var)) != None:
         symList.update({str(var): var})
-
+print("varset", varSet)
 #do partial diff
 for i in range(numVar):
     if isDebug: 
@@ -85,12 +87,19 @@ for i, x in enumerate(varList):
     varValues.append(y)     
     varMatch.append((x, y)) 
 
-print("Your function evaluates to: ", symEq.subs(varMatch))
+print("Your function with constants evaluates to: ", symEq.subs(varMatch))
 
+for i in range(numConst):
+    constVals.append((constList[i], input("Enter the value of constant " + constList[i] + ": "))) 
+print(constList[0])
+print("Your function without the constants is: ", symEq.subs(constVals).subs(varMatch))
+    
 for x in varList:
     uncertaintyList.update({"u" + x: input("Enter the value for " + "u" + x + ": ")})
 
 uncertainEqVal = uncertainEqVal.subs(uncertaintyList)
-print(uncertainEqVal)
+#print(uncertainEqVal)
 uncertainEqVal = uncertainEqVal.subs(varMatch)
+uncertainEqVal = uncertainEqVal.subs(constVals)
 print("Your uncertainty is ", sqrt(uncertainEqVal)) 
+
