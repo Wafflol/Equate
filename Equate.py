@@ -1,4 +1,4 @@
-#allows cursor movement in input
+#allows cursor movement in input (only works in linux) (comment out the line before in windows)
 import readline
 
 from math import sqrt
@@ -91,7 +91,7 @@ print("Your function with constants evaluates to: ", symEq.subs(varMatch))
 
 for i in range(numConst):
     constVals.append((constList[i], input("Enter the value of constant " + constList[i] + ": "))) 
-print(constList[0])
+#print(constList[0])
 print("Your function without the constants is: ", symEq.subs(constVals).subs(varMatch))
     
 for x in varList:
